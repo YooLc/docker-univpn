@@ -1,0 +1,16 @@
+services:
+  univpn:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+      - 2222:2222
+    environment:
+      - REMOTE_HOST=10.0.0.1:22
+    devices:
+      - /dev/net/tun
+    cap_add:
+      - NET_ADMIN
+    restart:
+      on-failure
