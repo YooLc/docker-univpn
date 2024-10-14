@@ -1,14 +1,18 @@
 # Docker wrapper for UniVPN
 
-## Usage
+## Usage 使用方法
 
 If you have docker-compose installed, you can run change the `REMOTE_HOST` variable in `docker-compose.yml`, then use the following command to start the container:
+
+如果已经安装了 docker-compose,可以设置 `docker-compose.yml` 里面的 `REMOTE_HOST` 为远程主机的地址和端口，然后运行下面这一条就好:
 
 ```bash
 docker compose start
 ```
 
 Othewise, build the image and run the container with the following commands:
+
+如果没有安装，就需要手动构建容器，可以参考下面:
 
 ```bash
 docker build -t docker-novnc-univpn .
@@ -23,15 +27,25 @@ docker run -d \
   docker-novnc-univpn
 ```
 
-## Setup for direct login
+After the docker container started, you can connect remote host from port 2222 of the docker container.
 
-Goto `http://localhost:8080` and login noVNC.
+docker 容器运行之后，docker 容器的 2222 端口（或者你自己设置的端口）就相当于远程主机的 ssh 端口，可以使用 ssh 登陆这个端口。
+
+比如，如果你的 docker 就跑在本机，可以在宿主机通过 `ssh username@127.0.0.1 -p 2222` 连接远程主机。
+
+## Setup for direct login 配置自动登录
+
+Goto `http://localhost:8080/vnc.html` and login noVNC.
+
+在 `http://localhost:8080/vnc.html` 可以看到容器的 noVNC 界面，进入后可以在图形界面中进行配置.
 
 Start UniVPN, and login with your credentials, remember to tick the "Auto Login" checkbox.
 
 Then, extract /root/UniVPN from the container and put it in the same directory as the Dockerfile.
 
 After that, you can rebuild this image and run again.
+
+在 UniVPN 登陆之后（记得点击自动登录），然后把容器 /root/UniVPN 这个目录下的文件提取出来，放到和 Dockerfile 同级的目录下。然后重新构建镜像并运行，就可以不用再登陆 noVNC 配置了。
 
 ## Credits
 
