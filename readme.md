@@ -24,7 +24,7 @@ docker build -t docker-novnc-univpn .
 
 ```bash
 docker pull ghcr.io/yoolc/docker-univpn:latest # timeout error 国内拉取失败可以执行：docker pull ghcr.nju.edu.cn/yooLc/docker-univpn:latest
-docker tag ghcr.io/yoolc/docker-univpn:latest docker-univpn:latest # retag image name 重命名镜像名
+docker tag ghcr.io/yoolc/docker-univpn:latest docker-novnc-univpn:latest # retag image name 重命名镜像名
 ```
 
 ### Run Container 运行容器
