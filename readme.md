@@ -14,20 +14,20 @@ Othewise, build the image and run the container with the following commands:
 
 如果没有安装，就需要手动构建容器或拉取镜像，可以参考下面:
 
-### 构建镜像
+### Docker build 构建镜像
 
 ```bash
 docker build -t docker-novnc-univpn .
 ```
 
-### 拉取镜像
+### Docker pull 拉取镜像
 
 ```bash
-docker pull ghcr.io/yoolc/docker-univpn:latest # 国内拉取失败可以执行：docker pull ghcr.nju.edu.cn/yooLc/docker-univpn:latest
-docker tag ghcr.io/yoolc/docker-univpn:latest docker-univpn:latest # 重命名镜像名
+docker pull ghcr.io/yoolc/docker-univpn:latest # timeout error 国内拉取失败可以执行：docker pull ghcr.nju.edu.cn/yooLc/docker-univpn:latest
+docker tag ghcr.io/yoolc/docker-univpn:latest docker-univpn:latest # retag image name 重命名镜像名
 ```
 
-### 运行容器
+### Run Container 运行容器
 
 ```bash
 docker run -d \
