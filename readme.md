@@ -12,11 +12,24 @@ docker compose start
 
 Othewise, build the image and run the container with the following commands:
 
-如果没有安装，就需要手动构建容器，可以参考下面:
+如果没有安装，就需要手动构建容器或拉取镜像，可以参考下面:
+
+### Docker build 构建镜像
 
 ```bash
 docker build -t docker-novnc-univpn .
+```
 
+### Docker pull 拉取镜像
+
+```bash
+docker pull ghcr.io/yoolc/docker-univpn:latest # timeout error 国内拉取失败可以执行：docker pull ghcr.nju.edu.cn/yooLc/docker-univpn:latest
+docker tag ghcr.io/yoolc/docker-univpn:latest docker-novnc-univpn:latest # retag image name 重命名镜像名
+```
+
+### Run Container 运行容器
+
+```bash
 docker run -d \
   --name univpn \
   -p 8080:8080 \
