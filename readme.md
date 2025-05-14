@@ -42,8 +42,13 @@ docker run -d \
   --cap-add NET_ADMIN \
   docker-novnc-univpn
 ```
-http proxy port：`18888`
-socks5 proxy port：`10801`
+端口说明：
+- http proxy port：`18888`
+- socks5 proxy port：`10801`
+- vnc网页访问端口：`8080`
+  - 访问方式：`http://localhost:8080/vnc.html`
+- `2222`无明确用途，可将远程主机`2222`端口转发至本地 ~比如ssh端口转发~
+> 对于校园网/组织网络等场景就没什么作用了，因为此时vpn连接的是跳板机而非服务器
 
 ## Setup for direct login 配置自动登录
 
