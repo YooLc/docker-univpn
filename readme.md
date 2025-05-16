@@ -34,17 +34,21 @@ docker run -d \
   --name univpn \
   -p 8080:8080 \
   -p 2222:2222 \
+  -p 10801:10801 \
+  -p 18888:18888 \
   -e REMOTE_HOST=<Your Remote Host> \
+  -v /app/univpn:/root/UniVPN \
   --device /dev/net/tun \
   --cap-add NET_ADMIN \
   docker-novnc-univpn
 ```
-
-After the docker container started, you can connect remote host from port 2222 of the docker container.
-
-docker 容器运行之后，docker 容器的 2222 端口（或者你自己设置的端口）就相当于远程主机的 ssh 端口，可以使用 ssh 登陆这个端口。
-
-比如，如果你的 docker 就跑在本机，可以在宿主机通过 `ssh username@127.0.0.1 -p 2222` 连接远程主机。
+端口说明：
+- http proxy port：`18888`
+- socks5 proxy port：`10801`
+- vnc网页访问端口：`8080`
+  - 访问方式：`http://localhost:8080/vnc.html`
+- `2222`无明确用途，可将远程主机`2222`端口转发至本地 ~比如ssh端口转发~
+> 对于校园网/组织网络等场景就没什么作用了，因为此时vpn连接的是跳板机而非服务器
 
 ## Setup for direct login 配置自动登录
 
